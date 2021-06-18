@@ -26,7 +26,7 @@
   </head>
 
   <!-- Beginn des HTML-Quelltextes -->
-  <body style="background-color:rgb(50, 50, 52)">
+  <body style="background-color:rgb(158, 158, 158)">
 
 	<!-- Sichtbarer Titel im Kopf der Webseite -->
     <h1 style="color:rgb(250, 250, 250)"><font face="Verdana">Karte zur Energiewende Hamburg</font></h1>
@@ -96,7 +96,7 @@
     <script type="text/javascript">
 
 		// Definition des Kartenausschnitts als Bounding Box
-		var extent = [510000.0, 5850000.0, 625000.4, 6000000.0];
+		var extent = [454000.0, 5570000.0, 506000.0, 5530000.0];
 
         var mousePositionControl = new ol.control.MousePosition({
         coordinateFormat: new ol.coordinate.createStringXY(4),
@@ -207,189 +207,18 @@
 
 			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
 			new ol.layer.Tile({
-				title: "Projekte zur Hamburger Energiewende",
+				title: "Aussichtspunkte",
 				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Energiewende',
+					url: 'http://localhost:8080/deegree-webservices/services/aussichtspunkt_wms',
 					params: {
-						'LAYERS': 'energiewende',
+						'LAYERS': 'Aussichtspunkt',
 						'FORMAT': 'image/png'
 					}
 				}),
 				visible: false
 			}),
 
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "B-Pläne mit energetischen Vorgaben",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_BPlaene_mit_energetischen_Vorgaben',
-					params: {
-						'LAYERS': 'b_plaene_energie',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: true
-			}),
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Quartierssanierungsprojekte",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Quartierssanierungsprojekte',
-					params: {
-						'LAYERS': 'quartierssanierungsprojekte',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: true
-			}),
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Absoluter Nutzwärmebedarf in Wohn- und Nichtwohngebäuden (Baublock saniert)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Waermebedarf',
-					params: {
-						'LAYERS': 'nw_abs_baubl_saniert',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
 			
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Absoluter Nutzwärmebedarf in Wohn- und Nichtwohngebäuden (Baublock unsaniert)",					
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Waermebedarf',
-					params: {
-						'LAYERS': 'nw_abs_baubl_unsaniert',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-			
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Absoluter Nutzwärmebedarf in Wohn- und Nichtwohngebäuden (Gebäudecluster saniert)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Waermebedarf',
-					params: {
-						'LAYERS': 'nw_abs_geb_saniert',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-			
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Absoluter Nutzwärmebedarf in Wohn- und Nichtwohngebäuden (Gebäudecluster unsaniert)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Waermebedarf',
-					params: {
-						'LAYERS': 'nw_abs_geb_unsaniert',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Absoluter Stromverbrauch (Gebäudecluster)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Stromverbrauch',
-					params: {
-						'LAYERS': 'stromverbrauch',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Gebäudecluster mit Heizstrom",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Stromverbrauch',
-					params: {
-						'LAYERS': 'stromverbrauch_gebaeudecluster',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-			
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-			title: "Hypothetisches Wärmenetz (Gebäude saniert)",
-			source: new ol.source.TileWMS({
-				url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Hypothetisches_Waermenetz',
-				params: {
-					'LAYERS': 'hypot_waermenetz_saniert',
-					'FORMAT': 'image/png'
-				}
-			}),
-			visible: false
-
-			}),			
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Hypothetisches Wärmenetz (Gebäude unsaniert)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Hypothetisches_Waermenetz',
-					params: {
-						'LAYERS': 'hypot_waermenetz_unsaniert',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-
-		
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Gebiete mit Wärmenetz",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Gebiete_Waermenetz',
-					params: {
-						'LAYERS': 'waermenetzgebiete',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Energieerzeugungsanlagen",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Waermekataster_Energieerzeugungsanlagen',
-					params: {
-						'LAYERS': 'energieerzeugungsanlagen',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: true
-			}),
-
-			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
-			new ol.layer.Tile({
-				title: "Windkraftanlagen",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Windkraftanlagen',
-					params: {
-						'LAYERS': 'wka',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: true
-			})
-
 		// Ende der Layerliste
         ],
 
