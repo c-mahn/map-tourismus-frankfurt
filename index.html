@@ -29,69 +29,13 @@
   <body style="background-color:rgb(158, 158, 158)">
 
 	<!-- Sichtbarer Titel im Kopf der Webseite -->
-    <h1 style="color:rgb(250, 250, 250)"><font face="Verdana">Karte zur Energiewende Hamburg</font></h1>
+    <h1 style="color:rgb(250, 250, 250)"><font face="Verdana">Tourismus in Frankfurt</font></h1>
 
 	<!-- Definition des div-Elements für die Platzierung der Karte im HTML -->
 	<div id="map" class="map"></div>
 	<div style="color:rgb(250, 250, 250)" id="mouse-position"></div>
 	  
-	<!-- Layerbeschreibungen -->
-	<h2 style="color:rgb(250, 250, 250)"><font face="Verdana">Information zu den Layern</font></h2>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Energieerzeugungsanlagen</font></h3>
-	<p style="color:rgb(226, 92, 31)"><font face="Verdana">Heizwerk</font></p>
-	<p style="color:rgb(251, 199, 54)"><font face="Verdana">Kraftwerk</font></p>
-	<p style="color:rgb(159, 37, 48)"><font face="Verdana">Heizkraftwerk</font></p>
-	<p style="color:rgb(135, 127, 33)"><font face="Verdana">Müllverbrennungsanlage</font></p>
-	<p style="color:rgb(131, 67, 17)"><font face="Verdana">Wärmetauscheranlage</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Gebiete mit Wärmenetz</font></h3>
-	<p style="color:rgb(233, 151, 2)"><font face="Verdana">Wärme Hamburg GmbH</font></p>
-	<p style="color:rgb(0, 113, 254)"><font face="Verdana">HanseWerk Natur GmbH</font></p>
-	<p style="color:rgb(117, 2, 70)"><font face="Verdana">URBANA Energiedienste GmbH</font></p>
-	<p style="color:rgb(228, 194, 246)"><font face="Verdana">enercity AG</font></p>
-	<p style="color:rgb(232, 1, 0)"><font face="Verdana">Hamburg Energie GmbH</font></p>
-	<p style="color:rgb(249, 254, 9)"><font face="Verdana">innogy SE</font></p>
-	<p style="color:rgb(2, 255, 185)"><font face="Verdana">EAM EnergiePlus GmbH</font></p>
-	<p style="color:rgb(38, 174, 84)"><font face="Verdana">Vattenfall Energy Solutions GmbH</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Hypothetisches Wärmenetz (Gebäude unsaniert/saniert)</font></h3>
-	<p style="color:rgb(37, 157, 112)"><font face="Verdana">weniger als 2 MWh pro Meter pro Jahr</font></p>
-	<p style="color:rgb(159, 188, 13)"><font face="Verdana">2 bis 3 MWh pro Meter pro Jahr</font></p>
-	<p style="color:rgb(255, 236, 3)"><font face="Verdana">3 bis 4 MWh pro Meter pro Jahr</font></p>
-	<p style="color:rgb(251, 187, 3)"><font face="Verdana">4 bis 5 MWh pro Meter pro Jahr</font></p>
-	<p style="color:rgb(232, 62, 34)"><font face="Verdana">mehr als 5 MWh pro Meter pro Jahr</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Absoluter Stromverbrauch (Gebäudecluster)</font></h3>
-	<p style="color:rgb(213, 237, 255)"><font face="Verdana">weniger als 50 MWh pro Jahr</font></p>
-	<p style="color:rgb(158, 199, 255)"><font face="Verdana">50 bis 100 MWh pro Jahr</font></p>
-	<p style="color:rgb(82, 127, 193)"><font face="Verdana">mehr als 100 MWh pro Jahr</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Absoluter Nutzwärmebedarf in Wohn- und Nichtwohngebäuden (Gebäudecluster unsaniert/saniert)</font></h3>
-	<p style="color:rgb(2, 142, 58)"><font face="Verdana">weniger als 150 MWh pro Jahr</font></p>
-	<p style="color:rgb(153, 191, 15)"><font face="Verdana">150 bis 350 MWh pro Jahr</font></p>
-	<p style="color:rgb(255, 236, 3)"><font face="Verdana">350 bis 550 MWh pro Jahr</font></p>
-	<p style="color:rgb(251, 187, 3)"><font face="Verdana">550 bis 750 MWh pro Jahr</font></p>
-	<p style="color:rgb(232, 62, 34)"><font face="Verdana">mehr als 750 MWh pro Jahr</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Absoluter Nutzwärmebedarf in Wohn- und Nichtwohngebäuden (Baublock unsaniert/saniert)</font></h3>
-	<p style="color:rgb(2, 142, 58)"><font face="Verdana">weniger als 1 GWh pro Jahr</font></p>
-	<p style="color:rgb(153, 191, 15)"><font face="Verdana">1 bis 3 GWh pro Jahr</font></p>
-	<p style="color:rgb(255, 236, 3)"><font face="Verdana">3 bis 5 GWh pro Jahr</font></p>
-	<p style="color:rgb(251, 187, 3)"><font face="Verdana">5 bis 7 GWh pro Jahr</font></p>
-	<p style="color:rgb(232, 62, 34)"><font face="Verdana">mehr als 7 GWh pro Jahr</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">B-Pläne mit energetischen Vorgaben</font></h3>
-	<p style="color:rgb(114, 113, 115)"><font face="Verdana">Neubauten an (KWK-) Wärmenetz</font></p>
-	<p style="color:rgb(255, 185, 22)"><font face="Verdana">Neubauten an (KWK-) Wärmenetz, > 30 % EE bei WW</font></p>
-	<p style="color:rgb(180, 252, 47)"><font face="Verdana">Neubauten an Wärmenetz, versorgt mit > 50 % EE</font></p>
-	<p style="color:rgb(238, 243, 18)"><font face="Verdana">Dachfläche muss mit Solaranlage belegt werden</font></p>
-
-	<h3 style="color:rgb(250, 250, 250)"><font face="Verdana">Projekte zur Hamburger Energiewende</font></h3>
-	<p style="color:rgb(42, 99, 156)"><font face="Verdana">Effizienz</font></p>
-	<p style="color:rgb(77, 158, 58)"><font face="Verdana">Erneuerbare Energien</font></p>
-	<p style="color:rgb(201, 47, 68)"><font face="Verdana">Netze</font></p>
-
+	
 	<!-- Beginn der eigenen Jaavascript-Konfiguration -->
     <script type="text/javascript">
 
@@ -131,8 +75,6 @@
 			new ol.control.LayerSwitcher(),
 			mousePositionControl
 			]),
-
-
 
 		//	Definition einer Layerliste
 		layers: [
@@ -244,7 +186,7 @@
 		// Definition des Views mit seinen Eigenschaften
         view: new ol.View({
           projection: proj25832,
-          center: [565874, 5934140],
+          center: [487096, 5542800],
           zoom: 0,
 		  resolutions : [66.14579761460263, 26.458319045841046, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
 		  maxResolution: "auto"
