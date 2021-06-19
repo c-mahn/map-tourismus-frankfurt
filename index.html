@@ -100,7 +100,7 @@
 			new ol.layer.Tile({
 				title: "OSM",
 				source: new ol.source.TileWMS({
-					url: 'https://ows.terrestris.de/osm/service',
+					url: 'https://ows.mundialis.de/osm/service',
 					type: 'base',
 					attributions: [
 					'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
@@ -111,6 +111,7 @@
 					}
 				}),
 				opacity: 1
+			}),
 
 			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
 			new ol.layer.Tile({
