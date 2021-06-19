@@ -98,15 +98,15 @@
 
 			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
 			new ol.layer.Tile({
-				title: "OSM",
+				title: "Global Basemap",
 				source: new ol.source.TileWMS({
-					url: 'https://ows.mundialis.de/osm/service',
+					url: 'https://sgx.geodatenzentrum.de/wms_topplus_open',
 					type: 'base',
 					attributions: [
-					'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
+								'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
 					],
 					params: {
-					'LAYERS': 'OSM-WMS',
+					'LAYERS': 'web_grau',
 					'FORMAT': 'image/png'
 					}
 				}),
@@ -120,7 +120,7 @@
 					url: 'https://geodienste.hamburg.de/HH_WMS_Geobasiskarten',
 					type: 'base',
 					attributions: [
-							'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
+								'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
 					],
 					params: {
 					'LAYERS': 'Geobasiskarten_farbig',
