@@ -96,7 +96,7 @@
     <script type="text/javascript">
 
 		// Definition des Kartenausschnitts als Bounding Box
-		var extent = [454000.0, 5570000.0, 506000.0, 5530000.0];
+		var extent = [510000.0, 5850000.0, 625000.4, 6000000.0];
 
         var mousePositionControl = new ol.control.MousePosition({
         coordinateFormat: new ol.coordinate.createStringXY(4),
@@ -153,6 +153,22 @@
 				}),
 				opacity: 1
 			}),
+
+			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
+			new ol.layer.Tile({
+				title: "OSM",
+				source: new ol.source.TileWMS({
+					url: 'https://ows.terrestris.de/osm/service',
+					type: 'base',
+					attributions: [
+					'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
+					],
+					params: {
+					'LAYERS': 'OSM-WMS',
+					'FORMAT': 'image/png'
+					}
+				}),
+				opacity: 1
 
 			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
 			new ol.layer.Tile({
