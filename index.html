@@ -113,6 +113,23 @@
 				visible: true
 			}),
 
+			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
+			new ol.layer.Tile({
+				title: "Stadtteile",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/stadtteile_wms',
+					type: 'base',
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					],
+					params: {
+					'LAYERS': 'Stadtteile',
+					'FORMAT': 'image/png'
+					}
+				}),
+				visible: true
+			}),
+
 			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
 			new ol.layer.Tile({
 				title: "Sehenswürdigkeit",
