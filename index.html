@@ -5,7 +5,7 @@
   <meta charset="utf-8"/>
 
 	<!-- Titel der Website -->
-    <title>Karte zur Energiewende Hamburg</title>
+    <title>Tourismus in Frankfurt</title>
 
     <!-- Definition der nötigen Style-Dateien -->
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v6.5.0/css/ol.css">
@@ -18,7 +18,7 @@
 	<!-- Definition zusätzlicher eigener Style-Angaben -->
 	<style>
       #map {
-        height: 80vh;
+        height: 85vh;
         width: 100%;
       }
     </style>
@@ -26,14 +26,14 @@
   </head>
 
   <!-- Beginn des HTML-Quelltextes -->
-  <body style="background-color:rgb(158, 158, 158)">
+  <body style="background-color:rgb(255, 255, 255)">
 
 	<!-- Sichtbarer Titel im Kopf der Webseite -->
-    <h1 style="color:rgb(250, 250, 250)"><font face="Verdana">Tourismus in Frankfurt</font></h1>
+    <h1 style="color:rgb(0, 0, 0)"><font face="Verdana">Tourismus in Frankfurt</font></h1>
 
 	<!-- Definition des div-Elements für die Platzierung der Karte im HTML -->
 	<div id="map" class="map"></div>
-	<div style="color:rgb(250, 250, 250)" id="mouse-position"></div>
+	<div style="color:rgb(0, 0, 0)" id="mouse-position"></div>
 	  
 	
 	<!-- Beginn der eigenen Jaavascript-Konfiguration -->
@@ -79,86 +79,35 @@
 		//	Definition einer Layerliste
 		layers: [
 
-			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
-			new ol.layer.Tile({
-				title: "Standard-Hintergrund (Geobasiskarte_schwarzgrau)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_SG',
-					type: 'base',
-					attributions: [
-							'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
-					],
-					params: {
-					'LAYERS': 'Geobasiskarten_schwarzgrau',
-					'FORMAT': 'image/png'
-					}
-				}),
-				opacity: 1
+		// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
+		new ol.layer.Tile({
+			title: "TopPlusOpen",
+			source: new ol.source.TileWMS({
+				url: 'https://sgx.geodatenzentrum.de/wms_topplus_open',
+				type: 'base',
+				attributions: [
+					'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+				],
+				params: {
+				'LAYERS': 'web_grau',
+				'FORMAT': 'image/png'
+				}
 			}),
+			visible: true
+		}),
 
 			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
 			new ol.layer.Tile({
-				title: "Global Basemap",
+				title: "OpenStreetMap",
 				source: new ol.source.TileWMS({
-					url: 'https://sgx.geodatenzentrum.de/wms_topplus_open',
+					url: 'https://ows.terrestris.de/osm/service',
 					type: 'base',
 					attributions: [
-								'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
 					],
 					params: {
-					'LAYERS': 'web_grau',
+					'LAYERS': 'OSM-WMS',
 					'FORMAT': 'image/png'
-					}
-				}),
-				opacity: 1
-			}),
-
-			// Definition des zweiten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
-			new ol.layer.Tile({
-				title: "Standard-Hintergrund (Geobasiskarte_farbig)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Geobasiskarten',
-					type: 'base',
-					attributions: [
-								'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
-					],
-					params: {
-					'LAYERS': 'Geobasiskarten_farbig',
-					'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-
-			// Definition des ersten Base-Layers (Hintergrundkarte) als WMS (Tiled=gekachelt)
-			new ol.layer.Tile({
-				title: '"Satelliten-Ansicht" (Luftbildbeflug DOP20)',
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_DOP',
-					type: 'base',
-					attributions: [
-								'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
-					],
-					params: {
-						'LAYERS': 'DOP',
-						'FORMAT': 'image/png'
-					}
-				}),
-				visible: false
-			}),
-
-			// Definition des dritten Base-Layers (Schriftplatte) als WMS (Tiled=gekachelt)
-			new ol.layer.Tile({
-				title: "Erweiterte Beschriftungen (Schriftplatte)",
-				source: new ol.source.TileWMS({
-					url: 'https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_Schriftplatte',
-					type: 'base',
-					attributions: [
-								'<a href="http://www.geoinfo.hamburg.de">Landesbetrieb Geoinformation und Vermessung</a>'
-					],
-					params: {
-						'LAYERS': 'Geobasiskarten_Schriftplatte',
-						'FORMAT': 'image/png'
 					}
 				}),
 				visible: true
@@ -166,15 +115,114 @@
 
 			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
 			new ol.layer.Tile({
-				title: "Aussichtspunkte",
+				title: "Sehenswürdigkeit",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/sehenswuerdigkeiten_wms',
+					params: {
+						'LAYERS': 'Sehenswuerdigkeit',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: true
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Museum",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/museum_wms',
+					params: {
+						'LAYERS': 'Museum',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: true
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Kunstgalerie",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/kunstgalerien_wms',
+					params: {
+						'LAYERS': 'Kunstgalerie',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: true
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Information",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/information_wms',
+					params: {
+						'LAYERS': 'Information',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: false
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Hotel",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/hotel_wms',
+					params: {
+						'LAYERS': 'Hotel',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: false
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Fahrradverleih",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/fahrradverleih_wms',
+					params: {
+						'LAYERS': 'Fahrradverleih',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: false
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Aussichtspunkt",
 				source: new ol.source.TileWMS({
 					url: 'http://localhost:8080/deegree-webservices/services/aussichtspunkt_wms',
 					params: {
 						'LAYERS': 'Aussichtspunkt',
 						'FORMAT': 'image/png'
-					}
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
 				}),
-				visible: false
+				visible: true
 			}),
 
 			
@@ -187,9 +235,9 @@
 		// Definition des Views mit seinen Eigenschaften
         view: new ol.View({
           projection: proj25832,
-          center: [476243, 5553046],
+          center: [477433, 5553046],
           zoom: 0,
-		  resolutions : [66.14579761460263, 26.458319045841046, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
+		  resolutions : [46.14579761460263, 26.458319045841046, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
 		  maxResolution: "auto"
         })
       });
