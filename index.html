@@ -120,7 +120,7 @@
 					url: 'http://localhost:8080/deegree-webservices/services/stadtteile_wms',
 					type: 'base',
 					attributions: [
-						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+						'<a href="https://www.offenedaten.frankfurt.de/dataset?tags=Rasterdaten">OpenStreetMap</a>'
 					],
 					params: {
 					'LAYERS': 'Stadtteile',
@@ -144,6 +144,22 @@
 					]
 				}),
 				visible: true
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Restaurant",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/cafe_wms',
+					params: {
+						'LAYERS': 'Restaurant',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: false
 			}),
 
 			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
@@ -217,6 +233,22 @@
 					url: 'http://localhost:8080/deegree-webservices/services/fahrradverleih_wms',
 					params: {
 						'LAYERS': 'Fahrradverleih',
+						'FORMAT': 'image/png'
+					},
+					attributions: [
+						'<a href="https://www.openstreetmap.org">OpenStreetMap</a>'
+					]
+				}),
+				visible: false
+			}),
+
+			// Definition eines weiteren ueberlagernden Layers als WMS (Tiled=gekachelt), beim Start ist der deaktiviert (visible=false)
+			new ol.layer.Tile({
+				title: "Cafe",
+				source: new ol.source.TileWMS({
+					url: 'http://localhost:8080/deegree-webservices/services/cafe_wms',
+					params: {
+						'LAYERS': 'Cafe',
 						'FORMAT': 'image/png'
 					},
 					attributions: [
